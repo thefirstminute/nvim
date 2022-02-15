@@ -29,6 +29,10 @@ wip
 * wip!
 
 # Installation
+_Before You Begin You Probably Need To (Re)move Local Files, If You've Already Been Running Neovim_
+```sh
+sudo rm -r .local/share/nvim
+```
 ### 1. Install Neovim & Use (AppImage):
 ```sh
 mkdir -p ~/Applications && cd ~/Applications
@@ -50,7 +54,7 @@ sudo update-alternatives --install /usr/bin/vim vim "${CUSTOM_NVIM_PATH}" 110
 sudo update-alternatives --install /usr/bin/vimdiff vimdiff "${CUSTOM_NVIM_PATH}" 110
 ```
 
-### Clone the nvims:
+### 2. Clone the nvims:
 ```sh
 mkdir -p ~/.config/nvim && cd ~/.config/nvim
 ```
@@ -58,10 +62,9 @@ _Make Sure You Don't Have Stuff In This Directory Before You Clone!!_
 ```sh
 git clone https://github.com/thefirstminute/nvim.git
 ```
-### Install Packages & Language Support:
+### 3. Install Packages & Language Support:
 
 #### Open Neovim...
-
 ```sh
 nvim init.lua
 ```
@@ -78,10 +81,10 @@ _You'll get a bunch of errors, ignore them_
 
 
 # Thanks
-* [Christian's LunarVim](https://github.com/ChristianChiarulli/LunarVim) - after looking at Neovim's implementation of Lua 3 times, this finally pushed me over the edge.
-* [TJ](https://github.com/tjdevries) for [telescope](https://github.com/nvim-telescope) in particular, and [NeoVim] (https://github.com/neovim/neovim)... and everything else I'm in awe.
+* [LunarVim](https://github.com/ChristianChiarulli/LunarVim) - after looking at Neovim's implementation of Lua several times, this finally pushed me over the edge
+* [TJ](https://github.com/tjdevries) for [telescope](https://github.com/nvim-telescope) in particular, and work on Neovim... and everything else; I'm in awe
 * [The Primeagen](https://github.com/ThePrimeagen) - Coding entertainment at it's finest
 * [hrsh7th](https://github.com/hrsh7th) - all the completiony goodness!  wow, seriously
 * [treesitter](https://github.com/nvim-treesitter) - one of the main reasons I made the leap
 
-And, of course, everyone making [NeoVim] (https://github.com/neovim/neovim) great!!
+And, of course, everyone making [NeoVim](https://github.com/neovim/neovim) great!!
