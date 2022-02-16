@@ -100,7 +100,9 @@ require('packer').startup(function()
   -- editing {{{
   -- use "blackCauldron7/surround.nvim" -- Surround text with quotes and brackets
   use "tpope/vim-surround"           -- Surround text with quotes and brackets AND TAGS
-  use "numToStr/Comment.nvim"        -- Quickly add and remove comments
+  -- use "numToStr/Comment.nvim"        -- Quickly add and remove comments
+  use 'tomtom/tcomment_vim'
+
   use "junegunn/vim-easy-align"      -- Make stuff look good by lining up
   -- }}}
 
@@ -138,8 +140,14 @@ require('packer').startup(function()
 
 
   -- Crutches {{{
-  use 'irrationalistic/vim-tasks'
-  --{{{
+
+  -- https://github.com/aserebryakov/vim-todo-lists#commands
+  use 'aserebryakov/vim-todo-lists'
+
+  --[[ {{{
+  -- use 'CrispyDrone/vim-tasks'
+  looks like ^^ is the 'real' version??
+  -- use 'irrationalistic/vim-tasks'
   -- https://github.com/irrationalistic/vim-tasks
   -- h Tasks
   -- <leader>n Add a new task below the current line
@@ -147,7 +155,7 @@ require('packer').startup(function()
   -- <leader>d Complete the current task(s)
   -- <leader>x Cancel the current task(s)
   -- <leader>a Update/build the archives
-  --}}}
+  --}}}]]
 
   use "folke/which-key.nvim" -- pop-up menu for commands etc
 
@@ -169,6 +177,20 @@ require('packer').startup(function()
   --[[ {{{
   LOOKS INTERESTING:
   https://github.com/lazytanuki/nvim-mapper
+
+  Organization, todos, slideshows??
+  https://github.com/nvim-neorg/neorg
+
+  Emacs-ish
+  https://github.com/nvim-orgmode/orgmode
+
+  Preview images
+  https://github.com/nvim-telescope/telescope-media-files.nvim
+
+  Manage clipboard - uses telescope
+  https://github.com/AckslD/nvim-neoclip.lua
+
+
   -- }}} ]]
 
   -- if PACKER_BOOTSTRAP then
@@ -180,7 +202,7 @@ end)
 -- Configur Plugins: {{{
 require 'plg.autocomplete'
 require 'plg.colorizer'
-require 'plg.comment'
+-- require 'plg.comment'
 require 'plg.emmet'
 require 'plg.lsp'
 require 'plg.nvim-tree'

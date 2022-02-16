@@ -13,22 +13,16 @@ Diagnostics...
 local n_maps = { -- {{{
   b = { name = 'Buffer', -- {{{
     b = {'<c-^>',    'Back'},
-    c = {'<cmd>bd<CR>',        'Close buffer'},
-    f = {'<cmd>bfirst<CR>',    'First buffer'},
+    c = {'<cmd>bd<CR>',               'Close buffer'},
+    f = {'<cmd>bfirst<CR>',           'First buffer'},
     j = {"<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<CR>", "Buffer Jump", },
-    l = {'<cmd>blast<CR>',     'Last buffer'},
-    n = {'<cmd>bnext<CR>',     'Next buffer'},
-    p = {'<cmd>bprevious<CR>', 'Previous buffer'} ,
+    l = {'<cmd>blast<CR>',            'Last buffer'},
+    n = {'<cmd>bnext<CR>',            'Next buffer'},
+    o = {'<cmd>only<CR>',             'Only this buffer'},
+    p = {'<cmd>bprevious<CR>',        'Previous buffer'} ,
+    s = {"<cmd>ls<CR>:b<Space>",      'Search'},
     S = {'<cmd>call ScratchMe()<CR>', 'new Scratch'} ,
-    s = {"<cmd>ls<CR>:b<Space>", 'Search'},
-    x = { "<cmd>xa!<CR>", "save all & quit" },
-  }, -- }}}
-
-  c = { name = 'Copy & Paste..', -- {{{
-    f = {':let @" = expand("%p")<CR>', 'File with path'},
-    p = {':let @" = expand("%:p")<CR>', 'Path'},
-    d = {':let @" = expand("%:")<CR>', 'Directory'},
-
+    x = { "<cmd>xa!<CR>",             "save all & quit" },
   }, -- }}}
 
   e = { name = 'edit..', -- {{{
@@ -36,6 +30,11 @@ local n_maps = { -- {{{
     s = {'<cmd>keeppatterns substitute/\\s*\\%#\\s*/\\r/e <bar> normal! ==<CR>',         'Split line'},
     j = {'mzJ`z',         'Join line'},
     p = {"<cmd>'[V']<CR>",         'select Pasted'},
+
+    c = { name = 'Comment..', -- {{{
+      b = {'^mm%y^`mA // END <C-r>"<Esc>', 'close comment on Bracket'},
+      t = {':norm ^w%wyt>%A <!-- END <C-r>" --><Esc>', 'close comment on Tag'},
+    }, -- }}}
 
     d = { name = 'Delete..', -- {{{
       b = {'<cmd>g/^$/d<CR>',                'Blank lines'},
@@ -46,12 +45,12 @@ local n_maps = { -- {{{
       s = {'<cmd>%s/span[^\\>]*//<cr>:%s/<>//<cr>:%s/<\\/>//<cr>:%s/<\\/span>//g<cr>/span<cr><CR>', 'span tags'},
       S = {'<cmd>%sort u<CR>',               'Sort, remove duplicate lines'},
       t = {'<cmd>%s/\\s\\+$//e<CR>',         'Trailing whitespace'},
-      T = {"<cmd>mq:norm %<CR>dd'qdd<CR>",   'This Tag'},
+      T = {"mq:norm %<CR>dd'qdd",   'This Tag'},
     }, -- }}}
 
     f = { name = 'Format..', -- {{{
       i = { name = 'Indent..',
-        a = {'gg=G', 'Head'},
+        a = {'gg=G', 'All'},
         h = {'/<head><CR>V100<<Esc>jV/<\\/head<CR>=', 'Head'},
         b = {'/<body<CR>V100<<Esc>jV/<\\/body<CR>=', 'Body'},
         t = {'vitB$oW0=', 'Tag'},
@@ -92,7 +91,6 @@ local n_maps = { -- {{{
       c = {'"*y :let @+=@*<CR>',         'to Clipboard'},
     }, -- END yank }}}
 
-
   }, -- END edit }}}
 
   f = { name = "file..", -- {{{
@@ -105,8 +103,10 @@ local n_maps = { -- {{{
     n = { "<cmd>enew<CR>",           "New" },
     s = { "<cmd>w!<CR>",             "Save" },
     S = { "<cmd>w !sudo tee %<CR>",  "Sudo Save" },
-    q = { "<cmd>q!<CR>", "Quit - NO save!" },
-    x = { "<cmd>xa!<CR>", "save all & quit" },
+    T = { "<cmd>-1read lua require'telescope.builtin'.find_files{ cwd = '~/Documents/templates/' }<CR>",  "Templates" },
+
+    q = { "<cmd>xa!<CR>", "save all & Quit all" },
+    x = { "<cmd>qall!<CR>", "quit all - NO save!" },
 
     t = { name = "type..", -- {{{
       c = { "<cmd>set ft=css<CR>",    "css" },
@@ -175,19 +175,35 @@ local n_maps = { -- {{{
     C = { "yiw:vimgrepadd <C-r>\" % <bar> copen<CR>", "Copen Directory",},
     -- are ^^ these the same??
     o = { "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<CR>", "Open buffers", },
-    F = { "<cmd>find <C-R>=expand('%:h').'/*'<CR>", "Find??",},
     -- f = { "<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<CR>", "Find File",},
     k = { "<cmd>Telescope keymaps<CR>", "Keymaps",},
     K = { "<cmd>Telescope keymaps<CR>", "Keymaps",},
     m = { "<cmd>Telescope marks<CR>", "Marks",},
-    T = { "<cmd>lua require('telescope.builtin').tags{ only_current_buffer = true }<CR>", "Tags", },
+    T = { "<cmd>require('telescope.config').values.buffer_previewer_maker<CR>", "Tags", },
     w = { "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<CR>", "Word in open buffers", },
     W = { "<cmd>Telescope live_grep<CR>", "Word in project" },
-    -- w = { "<cmd>lua require('telescope.builtin').grep_string()<CR>", "grep by Word",},
     p = { "<cmd>Telescope oldfiles<CR>", "Previously opened" },
-    P = { "<cmd>lua require('telescope').extensions.projects.projects()<CR>", "Projects" },
     q = { "<cmd>execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>", "last search in Quickfix",},
-    z = { "<cmd>Telescope <CR>", "fuZzy find in current",},
+    s = { "<cmd>lua require('telescope.builtin').spell_suggest()<CR>", "Spelling",},
+    z = { "<cmd>Telescope current_buffer_fuzzy_find<CR>", "fuZzy find in current",},
+
+-- mycheats () { du -a ~/Documents/my_cheats/* | awk '{print $2}' | fzf | xargs -r nvim ;}
+-- zz () { fzf | xargs -r -I % nvim % ;}
+--
+-- # find-in-file - usage: f <SEARCH_TERM>
+-- # https://medium.com/better-programming/boost-your-command-line-productivity-with-fuzzy-finder-985aa162ba5d
+-- f () {
+--   if [ ! "$#" -gt 0 ]; then
+--     echo "Need a string to search for!";
+--     return 1;
+--   fi
+--   rg --files-with-matches --no-messages "$1" | fzf $FZF_PREVIEW_WINDOW --preview "rg --ignore-case --pretty --context 10 '$1' {}" | xargs -r nvim;
+--
+-- }
+
+
+
+
   }, -- }}}
 
   S = { name = "Snip..", -- {{{
@@ -211,12 +227,18 @@ local n_maps = { -- {{{
   }, -- }}}
 
   v = { name = "vim..", -- {{{
-    c = { "<cmd>Telescope commands<CR>", "Commands" },
-    C = { "<cmd>call NoComment()<CR>", "no auto Comments!" },
-    d = { "<cmd>:lcd %:p:h<CR>", "set working Directory here" },
-    e = { "<cmd>NvimTreeToggle<CR>",     "Explorer" },
-    f = {
-      name = "set folds..",
+
+    C = { "<cmd>call NoComment()<CR>",    "no auto Comments!" },
+    c = { "<cmd>Telescope commands<CR>",  "Commands" },
+    d = { "<cmd>:lcd %:p:h<CR>",          "set working Directory here" },
+    e = { "<cmd>NvimTreeToggle<CR>",      "Explorer" },
+    F = { "<C-w>j:let &winheight = &lines * 7 / 10<CR><C-w>j:let &winwidth = &columns * 7 / 10<CR>", "Focus window" },
+    k = { "<cmd>Telescope keymaps<CR>",   "Keymaps" },
+    r = { "<cmd>Telescope registers<CR>", "Registers" },
+    w = { "<cmd>MatchupWhereAmI<CR>",     "Where am i (matchup)" },
+    x = { "<cmd>exit<CR>",                "eXit" },
+
+    f = { name = "set folds..", -- {{{
       ['0'] = { "<cmd>set foldlevel=0<CR>",                      "level 0"},
       ['1'] = { "<cmd>set foldlevel=1<CR>",                      "level 1"},
       ['2'] = { "<cmd>set foldlevel=2<CR>",                      "level 2"},
@@ -231,30 +253,35 @@ local n_maps = { -- {{{
       ['['] = { "<cmd>set foldmethod=marker foldmarker=[,]<CR>", "marker ["},
       ['<'] = { "<cmd>set foldmethod=marker foldmarker=<,><CR>", "marker <"},
     },
-    F = { "<C-w>j:let &winheight = &lines * 7 / 10<CR><C-w>j:let &winwidth = &columns * 7 / 10<CR>", "Focus window" },
-    H = {
-      name = "help",
+    -- }}}
+    H = { name = "help..", -- {{{
       h = { "<cmd>Telescope help_tags<CR>", "find Help" },
       m = { "<cmd>Telescope man_pages<CR>", "Man pages" },
     },
-    k = { "<cmd>Telescope keymaps<CR>",   "Keymaps" },
-    r = { "<cmd>Telescope registers<CR>", "Registers" },
-    S = { "<cmd>source ~/.config/nvim/init.lua<CR>",     "Source vimrc" },
-    s = {
-      name = "Session..",
+    -- }}}
+    p = { name = 'Path..', -- {{{
+      f = {':let @" = expand("%p")<CR>', 'File with path'},
+      p = {':let @" = expand("%:p")<CR>', 'Path'},
+      d = {':let @" = expand("%:")<CR>', 'Directory'},
+    }, -- }}}
+    S = { name = "Settings..", -- {{{
+      S = { "<cmd>source ~/.config/nvim/init.lua<CR>",     "Source vimrc" },
+      s = { "<cmd>set nospell!<CR>",     "Spelling highlight toggle " },
+      w = { "<cmd>set nowrap!<CR>",     "Wrap text toggle" },
+    },
+    -- }}}
+    s = { name = "Session..", -- {{{
       s = { "<cmd>mksession! .sess.vim<CR><cmd>echo 'Session Saved'<CR>", "save Session" },
       l = { "<cmd>source .sess.vim<CR>",     "load Session" },
     },
-    t = {
-      name = "Theme..",
+    -- }}}
+    t = { name = "Theme..", -- {{{
       h = { "<cmd>nohlsearch<CR>",            "no Highlight" },
       d = { "<cmd>set bg=dark<CR>",           "Dark" },
       l = { "<cmd>set bg=light<CR>",          "Light" },
       c = { "<cmd>Telescope colorscheme<CR>", "Colorscheme" },
       n = { "<cmd>set relativenumber!<CR>",   "relative Numbers" },
-    },
-    w = { "<cmd>MatchupWhereAmI<CR>", "Where am i (matchup)" },
-    x = { "<cmd>exit<CR>",            "eXit" },
+    }, -- }}}
   }, -- }}}
 
 } -- }}}
@@ -296,9 +323,13 @@ local iQ_maps = { -- {{{
   n = {'<C-n>',      'Next'},
   o = {'<C-x><C-o>', 'Omni'},
   p = {'<C-p>',      'Previous'},
-  t = {'<C-x><C-]>', 'Tag'},
+  s = { "<cmd>lua require('telescope.builtin').spell_suggest()<CR>", "Spelling",},
+  -- t = {'<C-x><C-]>', 'Tag'},
+  v = {'<C-r>"',    'Paste'},
+  V = {'<C-r>0',    '2nd Last Paste'},
+  ["/"] = {'',         'close HTML Tag'},
 
-  Q = { name = 'QuickTxts..', -- {{{
+  t = { name = 'QuickTxts..', -- {{{
     v = {'<++>',    '<++>'},
     b = {"='';",    "Blank ='';"},
     c = {'<++>',    '<++>'},
@@ -310,12 +341,11 @@ local iQ_maps = { -- {{{
   },
 
 
-  v = {'<C-r>"',    'Paste'},
-  V = {'<C-r>0',    '2nd Last Paste'},
+  Q = {'Q',    'Q'},
 
 } -- END iQ_maps }}}
 
-local iSlash_maps = { -- {{{
+local iSlash_maps = { -- {{{ Call with \
   d = { name = 'Double Quotes', -- {{{
     r = { name = 'Round ()',
       ["'"] = {'("")<left><left>',         '("")'},
@@ -379,7 +409,7 @@ local iSlash_maps = { -- {{{
 
 } -- END iQ_maps }}}
 
-local iNorm_maps = { -- {{{
+local iNorm_maps = { -- {{{ Call with ;
   h = {'<Esc>^i', 'Start of line'},
   l = {'<Esc>$a', 'End of line'},
   j = {'<Esc>jl', 'Down'},
@@ -400,7 +430,6 @@ local iNorm_maps = { -- {{{
     q = {'<Esc>f"la', 'Next Double Quote'},
   ["'"] = {"<Esc>f'la", 'Next Single Quote'},
   ['"'] = {'<Esc>f"la', 'Next Double Quote'},
-  [';'] = {';', ';'},
   ['/'] = {'<Esc>n',    'next search'},
   ['?'] = {'<Esc>N',    'previous search'},
 
@@ -424,6 +453,8 @@ local iNorm_maps = { -- {{{
     q = {'<Esc>?""<CR>a', 'Quotes'},
     s = {"<Esc>?''<CR>a", 'Single Quotes'},
   },
+
+  [';'] = {';', ';'},
 
 } -- END iNorm_maps }}}
 
