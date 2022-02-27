@@ -71,6 +71,7 @@ nvim init.lua
 _You'll get a bunch of errors, ignore them_
 
 #### Install Packages:
+Packages should install themselves now when you save the plg/install.lua file
 - Enter `:PackerInstall`
 
 #### Language Servers & Syntax:
