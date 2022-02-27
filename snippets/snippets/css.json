@@ -1,0 +1,10 @@
+{
+
+
+
+  "border-box": {
+    "prefix": "bbx",
+    "description": "box-sizing: border-box",
+    "body": [ "box-sizing: border-box;" ]
+  }
+}

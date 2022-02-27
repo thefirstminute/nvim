@@ -1,0 +1,135 @@
+{
+  "picsum": {
+    "prefix": "picsum",
+    "body": [ "<img src=\"https://picsum.photos/${1:1200}/${2:800}/?image=210${3:&blur}\" alt=\"${6:AltText}\">" ]
+  },
+  "phimg": {
+    "prefix": "phimg",
+    "description": "Image Placeholder",
+    "body": [ "<img src=\"https://place-hold.it/${1:250x250}/${2:CCC}/${3:333}.gif&text=${4:PlaceholderTextNOSPACES}&fontsize=${5:14}\" alt=\"${6:AltText}\">$0" ]
+  },
+  "meta viewport": {
+    "prefix": "mvp",
+    "description": "meta viewport",
+    "body": [ "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">" ]
+  },
+  "meta viewport nozoom": {
+    "prefix": "mvpnz",
+    "description": "meta viewport no zoom",
+    "body": [ "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no\">" ]
+  },
+  "ljs": {
+    "prefix": "ljs",
+    "description": "link to js file",
+    "body": [ "<script src=\"${1:js/custom.js}\"></script>" ]
+  },
+  "scriptjava": {
+    "prefix": "scriptjava",
+    "description": "link to js file",
+    "body": [
+      "<script language=\"JavaScript\">",
+      "$0",
+      "</script>"
+    ]
+  },
+  "divic": {
+    "prefix": "divic",
+    "description": "<div> w/ ID and Class",
+    "body": [
+      "<div${1: id=\"${2:id}\"} ${3: class=\"${4:class}\"}>",
+      "$0",
+      "</div>"
+    ]
+  },
+  "cfx": {
+    "prefix": "cfx",
+    "description": "ClearFix Div",
+    "body": [ "<div class=\"clearfix\"></div>" ]
+  },
+  "form-group": {
+    "prefix": "form-group",
+    "description": "Form: form-group -> label & input",
+    "body": [
+      "<div class=\"form-group\">",
+      "<label for=\"${1:this_thing}\">${2:Title:}</label>",
+      "<input type=\"text\" class=\"form_input\" id=\"$1\" name=\"$1\" value=\"<?php echo $$1; ?>\">",
+      "</div>$0"
+    ]
+  },
+  "fli": {
+    "prefix": "fli",
+    "description": "Form: label & input",
+    "body": [
+      "<label for=\"${1:this_thing}\">${2:Title:}</label>",
+      "<input type=\"text\" class=\"\" id=\"$1\" name=\"$1\" value=\"<?php echo $$1; ?>\">$0"
+    ]
+  },
+  "fso": {
+    "prefix": "fso",
+    "description": "Form: select option with values",
+    "body": [ "<option value=\"${1:this_thing}\" <?php if (\\$${2:php_var}=='$1') echo 'selected'; ?>>${3:${1/\\w+\\s*/\\u$0/}}</option>" ]
+  },
+  "yvid": {
+    "prefix": "yvid",
+    "description": "Youtube Video",
+    "body": [
+      "<div class=\"video-wrap mw-med\">",
+      "<div class=\"video-container\">",
+      "<iframe src=\"https://www.youtube.com/embed/${1:NpEaa2P7qZI}?modestbranding=1&rel=0&showinfo=0&controls=0&autoplay=0\" frameborder=\"0\" width=\"560\" height=\"315\" allowfullscreen></iframe>",
+      "</div>",
+      "</div>"
+    ]
+  },
+  "vvid": {
+    "prefix": "vvid",
+    "description": "Vimeo Video",
+    "body": [
+      "<div class=\"video-wrap mw-med\">",
+      "<div class=\"video-container\">",
+      "<iframe src=\"https://player.vimeo.com/video/${1:VIDEO_ID}\" width=\"640\" height=\"480\" frameborder=\"0\" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>",
+      "</div>",
+      "</div>"
+    ]
+  },
+  "html commment block": {
+    "prefix": "cblock",
+    "description": "Large HTML Comment Block",
+    "body": [
+      "<!--",
+      "##############################################",
+      "##############################################",
+      "#     ${1:Comment}",
+      "##############################################",
+      "##############################################",
+      "-->$0"
+    ]
+  },
+  "jquery-3": {
+    "prefix": "jquery-3",
+    "description": "include jquery-3 ",
+    "body": [ "<script src=\"https://code.jquery.com/jquery-3.4.1.slim.min.js\" integrity=\"sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=\" crossorigin=\"anonymous\"></script>" ]
+  },
+  "darktest": {
+    "prefix": "darktest",
+    "description": "description",
+    "body": [
+      "<!DOCTYPE html>",
+      "<html lang=\"en\">",
+      "<head>",
+      "<meta charset=\"UTF-8\">",
+      "<title>test it dark</title>",
+      "<style> body { background-color:#0C0C0D; color:#F3F3F3; height:100%; font-size:16px; font-weight:400; font-family:\"Lucida Console\", Monaco, monospace; margin:5%; } </style>",
+      "<script></script>",
+      "</head>",
+      "<body>",
+      "<?php $0 ?>",
+      "</body>",
+      "</html>"
+    ]
+  },
+  "unsplash": {
+    "prefix": "unsplash",
+    "description": "add unsplash image",
+    "body": [ "https://source.unsplash.com/${1:oqStl2L5oxI}/${2:1200}x${3:700}" ]
+  }
+}

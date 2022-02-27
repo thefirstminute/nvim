@@ -1,0 +1,126 @@
+snippet video "video wrapper css"
+/* VIDEO -------------- */
+.video-wrap {
+	width:96%;
+	margin:2vh auto 4vh;
+	background-color:#000;
+	border:#000 solid 5px;
+}
+.video-container {
+	position: relative;
+	padding-bottom: 56.25%;
+	height: 0;
+	overflow: hidden;
+	margin: 0 auto;
+}
+.video-container iframe, .video-container object, .video-container embed, .video-container video {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	border:none;
+}
+endsnippet
+
+snippet midcen "center box on screen css"
+.midCen-outer {
+	display: table;
+	position: absolute;
+	height: 100%;
+	width: 100%;
+}
+.midCen-middle {
+	display: table-cell;
+	vertical-align: middle;
+}
+.midCen-inner {
+	max-width: 600px;
+	margin:0 auto;
+	text-align:center;
+	border-radius: 6px;
+}
+endsnippet
+
+snippet textcss "my common css for text"
+.text-left{text-align:left}
+.text-right{text-align:right}
+.center-text{text-align:center}
+.text-justify{text-align:justify}
+.text-nowrap{white-space:nowrap}
+.text-lowercase{text-transform:lowercase}
+.text-uppercase{text-transform:uppercase}
+.text-capitalize{text-transform:capitalize}
+.text-smallcaps {font-variant: small-caps; }
+endsnippet
+
+snippet responsivecss "my responsive css"
+/* RESPONSIVE & COLUMNS  -------------------------------------------*/
+.col-1, .col-2, .col-3, .col-4, .col-5 { float:left; position:relative; margin: 0 !important; padding:0 !important; min-height:10px; }
+.col-1 { width: 100%; }
+.col-2 { width: 50%; }
+.col-3 { width: 33.33%; }
+.col-4 { width: 25%; }
+.col-5 { width: 20%; }
+
+.col, .half, .third, .twothird, .threequarter, .quarter { float:left; width:100%; }
+.col.s1 { width:8.33333% }
+.col.s2 { width:16.66666% }
+.col.s3 { width:24.99999% }
+.col.s4 { width:33.33333% }
+.col.s5 { width:41.66666% }
+.col.s6 { width:49.99999% }
+.col.s7 { width:58.33333% }
+.col.s8 { width:66.66666% }
+.col.s9 { width:74.99999% }
+.col.s10 { width:83.33333% }
+.col.s11 { width:91.66666% }
+.col.s12 { width:99.99999% }
+@media (min-width:767px) {
+.col.m1 { width:8.33333% }
+.col.m2 { width:16.66666% }
+.col.m3, .quarter { width:24.99999% }
+.col.m4, .third { width:33.33333% }
+.col.m5 { width:41.66666% }
+.col.m6, .half { width:49.99999% }
+.col.m7 { width:58.33333% }
+.col.m8, .twothird { width:66.66666% }
+.col.m9, .threequarter { width:74.99999% }
+.col.m10 { width:83.33333% }
+.col.m11 { width:91.66666% }
+.col.m12 { width:99.99999% }
+}
+@media (min-width:993px) {
+.col.l1 { width:8.33333% }
+.col.l2 { width:16.66666% }
+.col.l3 { width:24.99999% }
+.col.l4 { width:33.33333% }
+.col.l5 { width:41.66666% }
+.col.l6 { width:49.99999% }
+.col.l7 { width:58.33333% }
+.col.l8 { width:66.66666% }
+.col.l9 { width:74.99999% }
+.col.l10 { width:83.33333% }
+.col.l11 { width:91.66666% }
+.col.l12 { width:99.99999% }
+}
+
+
+.show-sml, .show-med, .show-lrg { display:none; }
+.hide-sml, .hide-med, .hide-lrg { display:block; }
+@media all and (min-width:1200px){
+.hide-lrg { display:none; }
+.show-lrg {display:block;}
+}
+
+@media (min-width:768px) and (max-width:1199px) {
+.hide-med { display:none; }
+.show-med {display:block;}
+}
+
+@media all and (max-width:767px) {
+.hide-sml { display:none; }
+.show-sml {display:block;}
+}
+endsnippet
+

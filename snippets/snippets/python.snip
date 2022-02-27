@@ -1,0 +1,54 @@
+snippet fp "for each print row" bA
+for ${1:row} in ${2:data}
+  print($1)
+$0
+endsnippet
+snippet forprint "for each print row"
+for ${1:row} in ${2:data}
+  print($1)
+$0
+endsnippet
+
+snippet souppage "page request soup"
+page = requests.get('${1:http://domain.com}'${2:, headers=headers})
+soup = BeautifulSoup(page.text, 'html.parser')
+$0
+endsnippet
+
+snippet {': "{'': ''}" A
+{'$1': '$2'}$0
+endsnippet
+
+snippet ;': "'': ''" A
+'$1': '$2'$0
+endsnippet
+
+snippet prnlbr "Print a noticeable new line break ₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪" bA
+print('\n ₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪ \n')
+endsnippet
+snippet prbr "Print a noticeable break ₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪" bA
+print('₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪')
+endsnippet
+
+
+snippet ;ste "soup try except" bA
+try:
+	${1:name} = soup.find('${2:div}', {'${3:class}': '${4:keyword}'})${5:.text.strip()}
+except Exception:
+	$1 = None
+$0
+endsnippet
+
+snippet ;te "try except" bA
+try:
+	${1:name} = ${2:whatever}
+except Exception:
+	$1 = None
+$0
+endsnippet
+
+snippet ifnn "if whatever is not None" bA
+if ${1:this} is not None:
+	$0
+endsnippet
+

@@ -1,0 +1,74 @@
+snippet L
+<Leader>
+endsnippet
+
+snippet nm
+nmap
+endsnippet
+
+snippet im
+imap
+endsnippet
+
+snippet vm
+vmap
+endsnippet
+
+snippet nnr
+nnoremap
+endsnippet
+
+snippet nnl
+nnoremap <Leader>
+endsnippet
+
+snippet inr
+inoremap
+endsnippet
+
+snippet vnr
+vnoremap
+endsnippet
+
+snippet au
+autocmd ${1:events} ${2:pattern} ${3:command}
+endsnippet
+
+snippet com
+command! -nargs=${1:number_of_args} ${2:other_params} ${2:name} ${2:command}
+endsnippet
+
+snippet fun
+"Function: $1
+"Desc: ${3:description}
+"
+"Arguments:
+"${4}
+function! ${1:name}(${2})
+	${5}
+endfunction
+endsnippet
+
+snippet if
+if ${1}
+	${2}
+endif
+endsnippet
+
+snippet ifel
+if ${1}
+	${2}
+else $0
+endif
+endsnippet
+
+snippet msg
+echomsg ${1}
+endsnippet
+
+snippet try
+try
+	${2}
+catch /${1}/
+endtry
+endsnippet

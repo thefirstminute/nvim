@@ -1,0 +1,19 @@
+{
+  "comment1": {
+    "prefix": "comm1",
+    "description": "Comment line: ═══════════════- ",
+    "body": [ "═══════════════- ${1:comment} -═══════════════" ]
+  },
+
+  "comment2": {
+    "prefix": "comm2",
+    "description": "Comment line: ═══════════════- ",
+    "body": [ "▒░▒░▒░▒░▒░▒░▒░▒ ${1:comment} ▒░▒░▒░▒░▒░▒░▒░▒" ]
+  },
+
+  "comment3": {
+    "prefix": "comm3",
+    "description": "Comment line: ═══════════════- ",
+    "body": [ "₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪- ${1:comment} -₪₪₪₪₪₪₪₪₪₪₪₪₪₪₪" ]
+  }
+}
