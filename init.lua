@@ -1,24 +1,25 @@
---[[
- _____ _   _ ___ ____   __        ___    ____
-|_   _| | | |_ _/ ___|  \ \      / / \  / ___|
-  | | | |_| || |\___ \   \ \ /\ / / _ \ \___ \
-  | | |  _  || | ___) |   \ V  V / ___ \ ___) |
-  |_| |_| |_|___|____/     \_/\_/_/   \_\____/
-
-  ____ _____ _____ _____ ___ _   _  ____    ____  ___   ___  ____  _
- / ___| ____|_   _|_   _|_ _| \ | |/ ___|  / ___|/ _ \ / _ \|  _ \| |
-| |  _|  _|   | |   | |  | ||  \| | |  _  | |  _| | | | | | | | | | |
-| |_| | |___  | |   | |  | || |\  | |_| | | |_| | |_| | |_| | |_| |_|
- \____|_____| |_|   |_| |___|_| \_|\____|  \____|\___/ \___/|____/(_)
-
---]]
-
+-- configs
+require("cfg.autocmd")
+require("cfg.keys")
 require("cfg.settings")
--- settings go above plg (colorizer) or you get termguicolor error
-require ("plg")
-require ("cfg.theme")
-require ("cfg.autocmd")
-require ("cfg.vimfunctions")
-require ("cfg.typosNabrs")
-require ("cfg.vimcmd")
-require ("cfg.keys")
+require("cfg.theme")
+require("cfg.typosNabrs")
+require("cfg.vimcmd")
+require("cfg.vimfunctions")
+
+-- install plugins
+require("plg.install")
+
+-- plugin configs
+require("plg.cmp")
+require("plg.emmet")
+require("plg.lualine")
+require("plg.nvim-tree")
+require("plg.pounce")
+require("plg.spectre")
+require("plg.telescope")
+require("plg.treesitter")
+require("plg.vim-matchup")
+require("plg.whichkey")
+
+require("lsp")
