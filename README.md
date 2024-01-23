@@ -13,20 +13,14 @@
 # nvim
 NeoVim configs (in Lua)
 
-getting witht he millenium and replacing my old vim files...
-
 # Features
-wip
-* syntax highlighting with treesitter
-* Autocompletion
 * WhichKey to help remember commands
 * 'Normal' type commands from insert mode with leader ;
 * 'QuickTxt' from insert with leader Q
 
 # Requirements
-* Needs at least Neovim 0.5
-* probably other things...
-* wip!
+* Needs at least Neovim 0.7
+
 
 # Installation
 _Before You Begin You Probably Need To (Re)move Local Files, If You've Already Been Running Neovim_
@@ -68,17 +62,6 @@ git clone https://github.com/thefirstminute/nvim.git
 ```sh
 nvim init.lua
 ```
-_You'll get a bunch of errors, ignore them_
-
-#### Install Packages:
-Packages should install themselves now when you save the plg/install.lua file
-- Enter `:PackerInstall`
-
-#### Language Servers & Syntax:
-
-- Enter `:LspInstall` followed by `<TAB>` to see your options for LSP
-
-- Enter `:TSInstall` followed by `<TAB>` to see your options for syntax highlighting
 
 
 # Thanks
